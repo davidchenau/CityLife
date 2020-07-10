@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>CityLife Church Countdown</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+        }
+        #video_frame {
+            position: absolute;
+            top: -4vw;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+		@keyframes marquee {
+		  0%   {transform: translateX(100%)}
+		  100% {transform: translateX(-100vw)}
+		}        
+        .bible-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(247, 150, 66);
+            height: calc(100vh - 45vw);
+        }
+        .bible {
+            position: absolute;
+            font-family: MingLiu;
+            bottom: 0;
+            right: 0;
+            transform: translateX(100%);
+            font-size: calc((100vh - 45vw) * 0.618);
+            font-weight: bold;
+            color: #000000;
+            line-height: calc(100vh - 45vw);
+            white-space: nowrap;
+            animation-name: marquee;
+            animation-duration: 30s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+    </style>
+  </head>
+  <body>
+      <div class="video-container">
+          <iframe id="video_frame" width="1276" height="614"
+            src="https://www.youtube.com/embed/zFCBLI5gW94?autoplay=1"
+            frameborder="0">
+          </iframe> 
+      </div>
+      <div class="bible-container">
+          <div class="bible">
+              父爱子，已将万有交在他手里。信子的人有永生；不信子的人得不着永生，神的震怒常在他身上。——约翰福音三章35-36
+          </div>
+      </div>
+  </body>
+</html>
+
