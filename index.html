@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="css/citylife.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section 
+                    data-background-image="images/main-cross.png"
+                    data-background-size="contain"
+                    >
+                    <div id="s1_praise"><img src="images/praise.png"/></div>
+                    <div id="s1_chinese_church"><img src="images/citylife_chinese_church.png"/></div>
+                    <audio data-autoplay loop id="s1_audio">
+                        <source src="audio/让赞美飞扬.mp3" type="audio/mpeg">
+                    </audio>
+                </section>
+                <section
+                    data-background-image="images/countdown_bg.jpg"
+                    data-background-size="cover"
+                    data-state="countdown_start"
+                    >
+                    <div id="s2_bible_title">
+                        以赛亚书 35
+                    </div>
+                    <div id="s2_bible_text"><!--
+                        -->神圣之路
+1 旷野和干旱之地必然欢喜；
+沙漠也必快乐；
+又像玫瑰开花，
+2 必开花繁盛，
+乐上加乐，而且欢呼。
+黎巴嫩的荣耀，
+并迦密与沙仑的华美，必赐给它。
+人必看见耶和华的荣耀，
+我们神的华美。
+</div>
+
+                    <div id="s2_timer">3:00</div>
+                    <audio data-autoplay loop>
+                        <source src="audio/countdown.mp3" type="audio/mpeg">
+                    </audio>
+                </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+                width: 1920,
+                height: 1080,
+				hash: true,
+                margin: 0,
+                disableLayout: true,
+                center: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+            var timerHandler;
+            var timer = event => {
+                if (event.currentSlide.dataset.state === 'countdown_start') {
+                    if (timerHandler) {
+                        window.clearInterval(timerHandler);
+                        timerHandler = null;
+                    }
+                    var count = 180;
+                    var elem = document.getElementById('s2_timer');
+                    elem.innerHTML = '3:00'
+                    timerHandler = window.setInterval(function() {
+                        count--;
+                        var minute = Math.floor(count / 60);
+                        var second = count - (minute * 60);
+                        elem.innerHTML = minute + ':' + String(second).padStart(2, '0');
+                        if (count === 0) {
+                            window.clearInterval(timerHandler);
+                            timerHandler = null;
+                        }
+                    }, 1000);
+                } else {
+                    window.clearInterval(timerHandler);
+                    timerHandler = null;
+                }
+            };
+            Reveal.on('slidetransitionend', timer);
+            Reveal.on('ready', timer);
+            var created = false;
+            var videoId;
+            Reveal.on('ready', event => {
+                videoId = event.currentSlide.querySelector('audio')
+            })
+            document.addEventListener('click', () => {
+				if (!created) {
+					created = true;
+					//var v = document.getElementById('s1_audio');
+                    var v = videoId;
+					v.play().catch((e)=>{ console.log(e)});                
+	            }
+            });
+		</script>
+	</body>
+</html>
