@@ -46,6 +46,12 @@
 6 我与那恨恶和睦的人，许久同住。 
 7 我愿和睦。但我发言，他们就要争战。
 </div>
+                    <div id="s2_marquee">
+                        以赛亚书53:5 哪知他为我们的过犯受害，为我们的罪孽压伤。因他受的刑罚我们得平安。因他受的鞭伤我们得医治。
+                        约翰福音14:27 我留下平安给你们，我将我的平安赐给你们。我所赐的，不像世人所赐的。你们心里不要忧愁，也不要胆怯。
+                        歌罗西书 3:15 又要叫基督的平安在你们心里作主。你们也为此蒙召，归为一体。且要存感谢的心。
+                        罗马书5:1 我们既因信称义，就借着我们的主耶稣基督，得与神相和。
+                    </div>
 
                     <div id="s2_timer">3:00</div>
                     <audio data-autoplay loop>
@@ -97,9 +103,13 @@
                             timerHandler = null;
                         }
                     }, 1000);
+                    var marquee = document.getElementById('s2_marquee');
+                    marquee.classList.add('animate')
                 } else {
                     window.clearInterval(timerHandler);
                     timerHandler = null;
+                    var marquee = document.getElementById('s2_marquee');
+                    marquee.classList.remove('animate')
                 }
             };
             Reveal.on('slidetransitionend', timer);

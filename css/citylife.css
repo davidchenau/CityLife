@@ -331,10 +331,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #s2_timer {
     font-family: SourceSansProBlack;
     position: absolute;
-    bottom: 1.5vh;
+    bottom: 4.5vh;
     opacity: 0.5;
     right: 8vw;
-    font-size: 80px;
+    font-size: 60px;
     font-weight: bold;
 }
 #s2_bible_title {
@@ -352,6 +352,24 @@ section.has-light-background, section.has-light-background h1, section.has-light
     white-space: pre-line;
     font-size: 40px;
 }
+@keyframes marquee {
+  0%   {transform: translateX(100vw)}
+  100% {transform: translateX(-100%)}
+}
+
+#s2_marquee {
+    position: absolute;
+    bottom: 1vh;
+    white-space: nowrap;
+    transform: translateX(100vw);
+}
+#s2_marquee.animate {
+	animation-name: marquee;
+	animation-duration: 60s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+}
 @media screen and (max-width: 375px) {
     #s1_praise {
         transform: translateX(-30vw) translateY(20vh);
@@ -366,3 +384,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
         font-size: 24px;
     }
 }
+@media screen and (min-width: 414px) and (max-width: 719px) {
+    #s1_praise {
+        ansform: translateX(-30vw) translateY(20vh);
+    }
+    #s1_chinese_church {
+        ansform: translateX(-30vw) translateY(32vh);
+    }
+    #s2_bible_title {
+        font-size: 36px;
+    }
+    #s2_bible_text {
+        font-size: 26px;
+    }
+}
+
