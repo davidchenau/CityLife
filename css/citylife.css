@@ -342,7 +342,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
     margin-top: 5vh;
     margin-left: 5vw;
     text-align: left;
-    font-size: 60px;
+    font-size: 5vmin;
     font-weight: bold;
 }
 #s2_bible_text {
@@ -350,7 +350,38 @@ section.has-light-background, section.has-light-background h1, section.has-light
     margin-left: 5vw;
     text-align: left;
     white-space: pre-line;
-    font-size: 40px;
+    font-size: 4.5vmin;
+}
+#s2_bible_title .text {
+    opacity: 0;
+    position: absolute;
+    transition: opacity .5s ease-out, left .5s linear, margin-left 1s ease-out;
+    left: -10vw;
+    margin-left: 20vw;
+}
+#s2_bible_title .text.active {
+    opacity: 1;
+    left: 5vw;
+    margin-left: 0;
+    transition: opacity 1s ease-out,
+        left 1s ease-out;
+}
+
+
+#s2_bible_text .text {
+    opacity: 0;
+    position: absolute;
+    top: 10vmin;
+    transition: opacity .5s ease-out, left .5s linear, margin-left 1s ease-out;
+    left: -10vw;
+    margin-left: 20vw;
+}
+#s2_bible_text .text.active {
+    opacity: 1;
+    left: 5vw;
+    margin-left: 0;
+    transition: opacity 1s ease-out,
+        left 1s ease-out;
 }
 @keyframes marquee {
   0%   {transform: translateX(100vw)}

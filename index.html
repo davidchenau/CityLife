@@ -20,6 +20,7 @@
                     data-background-image="images/main-cross.png"
                     data-background-size="contain"
                     >
+                    <button id="request_full_screen">Full Screen</button>
                     <div id="s1_text_container">
                         <div id="s1_praise"><img src="images/praise.png"/></div>
                         <div id="s1_chinese_church"><img src="images/citylife_chinese_church.png"/></div>
@@ -34,23 +35,56 @@
                     data-state="countdown_start"
                     >
                     <div id="s2_bible_title">
-                        诗篇 120
+                        <div class="text1 text active">
+                            诗篇 120
+                        </div>
+                        <div class="text2 text">
+                            以赛亚书53:5
+                        </div>
+                        <div class="text3 text">
+                            约翰福音14:27
+                        </div>
+                        <div class="text4 text">
+                            歌罗西书 3:15
+                        </div>
+                        <div class="text5 text">
+                            罗马书5:1
+                        </div>
                     </div>
-                    <div id="s2_bible_text"><!--
-                        -->上行之诗
-1 我在急难中求告耶和华，他就应允我。 
-2 耶和华阿，求你救我脱离说谎的嘴唇，和诡诈的舌头。
-3 诡诈的舌头阿，要给你什么呢？要拿什么加给你呢？ 
-4 就是勇士的利箭，和罗腾木的炭火（罗腾小树名松类）。 
-5 我寄居在米设，住在基达帐棚之中，有祸了。 
-6 我与那恨恶和睦的人，许久同住。 
-7 我愿和睦。但我发言，他们就要争战。
-</div>
-                    <div id="s2_marquee">
-                        以赛亚书53:5 哪知他为我们的过犯受害，为我们的罪孽压伤。因他受的刑罚我们得平安。因他受的鞭伤我们得医治。
-                        约翰福音14:27 我留下平安给你们，我将我的平安赐给你们。我所赐的，不像世人所赐的。你们心里不要忧愁，也不要胆怯。
-                        歌罗西书 3:15 又要叫基督的平安在你们心里作主。你们也为此蒙召，归为一体。且要存感谢的心。
-                        罗马书5:1 我们既因信称义，就借着我们的主耶稣基督，得与神相和。
+                    <div id="s2_bible_text">
+                        <div class="text1 text active">
+                            上行之诗
+                            1 我在急难中求告耶和华，他就应允我。 
+                            2 耶和华阿，求你救我脱离说谎的嘴唇，和诡诈的舌头。
+                            3 诡诈的舌头阿，要给你什么呢？要拿什么加给你呢？ 
+                            4 就是勇士的利箭，和罗腾木的炭火（罗腾小树名松类）。 
+                            5 我寄居在米设，住在基达帐棚之中，有祸了。 
+                            6 我与那恨恶和睦的人，许久同住。 
+                            7 我愿和睦。但我发言，他们就要争战。
+                        </div>
+                        <div class="text2 text">
+                            哪知他为我们的过犯受害，
+                            为我们的罪孽压伤。
+                            因他受的刑罚我们得平安。
+                            因他受的鞭伤我们得医治。
+                        </div>
+                        <div class="text3 text">
+                            我留下平安给你们，
+                            我将我的平安赐给你们。
+                            我所赐的，不像世人所赐的。
+                            你们心里不要忧愁，也不要胆怯。
+                        </div>
+                        <div class="text4 text">
+                            又要叫基督的平安在你们心里作主。
+                            你们也为此蒙召，
+                            归为一体。
+                            且要存感谢的心。
+                        </div>
+                        <div class="text5 text">
+                            我们既因信称义，
+                            就借着我们的主耶稣基督，
+                            得与神相和。
+                        </div>
                     </div>
 
                     <div id="s2_timer">3:00</div>
@@ -70,6 +104,7 @@
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="scripts/fullscreen-polyfill.js"></script>
 		<script>
 			function closeFullscreen() {
 				if (document.exitFullscreen) {
@@ -82,6 +117,23 @@
 				document.msExitFullscreen();
 				}
 			}
+            function switchBibleText(number) {
+                var list;
+                var nextItem;
+                list = document.querySelectorAll('#s2_bible_title .text');
+                list.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                nextItem = document.querySelector('#s2_bible_title .text' + number);
+                nextItem.classList.add('active');
+
+                list = document.querySelectorAll('#s2_bible_text .text');
+                list.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                nextItem = document.querySelector('#s2_bible_text .text' + number);
+                nextItem.classList.add('active');
+            }
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
@@ -98,6 +150,9 @@
 			});
             var timerHandler;
             var timer = event => {
+                if (event.currentSlide.dataset.state === 'google_slide') {
+                    document.exitFullscreen();
+                }
                 if (event.currentSlide.dataset.state === 'countdown_start') {
                     if (timerHandler) {
                         window.clearInterval(timerHandler);
@@ -115,17 +170,47 @@
                             window.clearInterval(timerHandler);
                             timerHandler = null;
                         }
+                        switch (count) {
+                            case 160:
+                                switchBibleText(2);
+                                break;
+                            case 145:
+                                switchBibleText(3);
+                                break;
+                            case 130:
+                                switchBibleText(4);
+                                break;
+                            case 115:
+                                switchBibleText(5);
+                                break;
+                            case 100:
+                                switchBibleText(1);
+                                break;
+                            case 80:
+                                switchBibleText(2);
+                                break;
+                            case 60:
+                                switchBibleText(3);
+                                break;
+                            case 40:
+                                switchBibleText(4);
+                                break;
+                            case 20:
+                                switchBibleText(5);
+                                break;
+                        }
                     }, 1000);
+                    /*
                     var marquee = document.getElementById('s2_marquee');
                     marquee.classList.add('animate')
+                   */
                 } else {
                     window.clearInterval(timerHandler);
                     timerHandler = null;
+                    /*
                     var marquee = document.getElementById('s2_marquee');
                     marquee.classList.remove('animate')
-                }
-				if (event.currentSlide.dataset.state === 'google_slide') {
-                    closeFullscreen();
+                   */
                 }
             };
             Reveal.on('slidetransitionend', timer);
@@ -143,6 +228,11 @@
 					v.play().catch((e)=>{ console.log(e)});                
 	            }
             });
+            var fullScreenButton = document.getElementById('request_full_screen');
+            fullScreenButton.addEventListener('click', function() {
+                document.documentElement.requestFullscreen();
+                fullScreenButton.parentNode.removeChild(fullScreenButton);
+            })
 		</script>
 	</body>
 </html>
