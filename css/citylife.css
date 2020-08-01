@@ -344,6 +344,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
     text-align: left;
     font-size: 5vmin;
     font-weight: bold;
+    position: relative;
 }
 #s2_bible_text {
     font-family: 微软雅黑, "Microsoft YaHei";
@@ -351,6 +352,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
     text-align: left;
     white-space: pre-line;
     font-size: 4.5vmin;
+    position: relative;
 }
 #s2_bible_title .text {
     opacity: 0;
@@ -409,10 +411,12 @@ section.has-light-background, section.has-light-background h1, section.has-light
         transform: translateX(-30vw) translateY(32vh);
     }
     #s2_bible_title {
-        font-size: 36px;
+        font-size: 30px;
+        margin-top: 20vh;
     }
     #s2_bible_text {
-        font-size: 24px;
+        font-size: 20px;
+        line-heith: 5vh;
     }
 }
 @media screen and (min-width: 414px) and (max-width: 719px) {
