@@ -332,15 +332,16 @@ section.has-light-background, section.has-light-background h1, section.has-light
     font-family: SourceSansProBlack;
     position: absolute;
     bottom: 4.5vh;
-    opacity: 0.5;
+    opacity: 0.8;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
     right: 8vw;
-    font-size: 60px;
+    font-size: 18vh;
     font-weight: bold;
 }
 #s2_bible_title {
     font-family: 微软雅黑, "Microsoft YaHei";
-    margin-top: 5vh;
-    margin-left: 5vw;
+    margin-top: 12vh;
+    margin-left: 18vw;
     text-align: left;
     font-size: 5vmin;
     font-weight: bold;
@@ -348,7 +349,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 #s2_bible_text {
     font-family: 微软雅黑, "Microsoft YaHei";
-    margin-left: 5vw;
+    margin-left: 18vw;
     text-align: left;
     white-space: pre-line;
     font-size: 4.5vmin;
