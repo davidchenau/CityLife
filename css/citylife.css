@@ -314,13 +314,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-68vh) translateY(26vh);
+    transform: translateX(-50%) translateX(-25vw) translateY(16.56vw) translateY(-50%);
 }
 #s1_chinese_church {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(24vh) translateY(32vh);
+    transform: translateX(-50%) translateX(25vw) translateY(16.56vw) translateY(-50%);
 }
 
 @font-face {
@@ -340,8 +340,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 #s2_bible_title {
     font-family: 微软雅黑, "Microsoft YaHei";
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
     margin-top: 12vh;
-    margin-left: 18vw;
+    margin-left: 0vw;
     text-align: left;
     font-size: 5vmin;
     font-weight: bold;
@@ -349,11 +350,12 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 #s2_bible_text {
     font-family: 微软雅黑, "Microsoft YaHei";
-    margin-left: 18vw;
+    margin-left: 0vw;
     text-align: left;
     white-space: pre-line;
     font-size: 4.5vmin;
     position: relative;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 #s2_bible_title .text {
     opacity: 0;
@@ -374,7 +376,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 #s2_bible_text .text {
     opacity: 0;
     position: absolute;
-    top: 10vmin;
+    top: 4vmin;
     transition: opacity .5s ease-out, left .5s linear, margin-left 1s ease-out;
     left: -10vw;
     margin-left: 20vw;
